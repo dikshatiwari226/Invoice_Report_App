@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @invoice.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @invoice.description %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @invoice.deadline %>
+</p>
+
+<p>
+  <strong>Currency:</strong>
+  <%= @invoice.currency %>
+</p>
+
+<p>
+  <strong>Total:</strong>
+  <%= @invoice.total %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @invoice.start_date.strftime "%a, %-d %b %Y %I:%M %p" %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @invoice.end_date.strftime "%a, %-d %b %Y %I:%M %p" %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice),:class => 'btn peach-gradient waves-effect waves-light' %> |
+<%= link_to 'Back', invoices_path,:class => 'btn blue-gradient waves-effect waves-light' %>

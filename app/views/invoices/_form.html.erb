@@ -1,0 +1,102 @@
+<div class="container">
+<%= form_with(model: invoice, local: true) do |form| %>
+  <% if invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+      <% invoice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field col-lg-12">
+    <%= form.label :title %>
+    <%= form.text_field :title , autofocus: true, autocomplete: "title",  class: 'form-control'%>
+  </div>
+
+  <div class="field col-lg-12">
+    <%= form.label :description %>
+    <%= form.text_area :description, autofocus: true, autocomplete: "description",  class: 'form-control' %>
+  </div>
+
+  <div class="field col-lg-12">
+    <%= form.label :deadline %>
+    <%= form.text_field :deadline, autofocus: true, autocomplete: "deadline",  class: 'form-control' %>
+  </div>
+
+  <div class="field col-lg-12">
+    <%= form.label :currency %>
+    <%= form.number_field :currency , autofocus: true, autocomplete: "currency",  class: 'form-control'%>
+  </div>
+
+  <div class="field col-lg-12">
+    <%= form.label :total %>
+    <%= form.number_field :total, autofocus: true, autocomplete: "total",  class: 'form-control' %>
+  </div>
+
+  <div class="field col-lg-12">
+    <%= form.label :status%>
+    <%= form.select :status, options_for_select([["Pending", "Pending"],
+["Created", "Created"],["Cancelled", "Cancelled"], ["Completed", "Completed"]]), class: 'form-control' %>
+    <%#= form.collection_select :status, Category.all, :id, 
+    :name, {:prompt=> "Select a category"}, class: 'form-control', :required=> true  %>
+  </div>
+
+  <div class="field col-lg-12">
+    <%= form.label :start_date %>
+    <%= form.text_field :start_date, :class=>'form-control datepicker ' , :id=>'start_date',  autocomplete: :off  , :required=> true %>
+  </div>
+  
+  <div class="field col-lg-12">
+    <%= form.label :end_date %>
+    <%= form.text_field :end_date, :class=>'form-control datepicker', :id=>'end_date', autocomplete: :off, :required=> true %>
+  </div>
+  <div class="actions text-center">
+    <%= form.submit :class => 'btn blue-gradient waves-effect waves-light' %>
+  </div>
+<% end %>
+</div>
+
+
+<!-- Start_Date & End_Date Validation  -->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".datepicker").datepicker({
+      format: 'dd M yyyy',          // 12 Aug 2019 print date this format
+      autoclose: true,
+      todayHighlight: true,
+      orientation: 'auto top',
+      todayBtn: "linked"
+    }).on("changeDate", function (e) {
+      var start_date = $("#start_date").val(); 
+      var end_date = $("#end_date").val();  // get a string format date
+
+      if (start_date != "" && end_date != ""){
+          start_date = new Date(start_date);
+          end_date = new Date(end_date); // convert string date to date format 
+          if (end_date < start_date){
+            alert("End date should be greater or equal to start Date");
+            $(this).val("");   
+          }
+      }
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".datepicker").datepicker('setStartDate', 'Date.Today');
+  });
+</script>
+
+<!-- Style -->
+
+<style type="text/css">
+  .mynewinput1 {
+    width:644%;
+  }
+</style>
