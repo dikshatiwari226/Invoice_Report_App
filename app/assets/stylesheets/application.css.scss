@@ -12,11 +12,12 @@
  *
  *= require_self
  *= require_tree .
- 
+ * require bootstrap-datepicker
+ *= require bootstrap-datetimepicker
+ * require jquery-ui
 
  */
 	@import "bootstrap/glyphicons";
-	/*@import "bootstrap-sprockets";*/
   @import "bootstrap";
 
   @import "custom";

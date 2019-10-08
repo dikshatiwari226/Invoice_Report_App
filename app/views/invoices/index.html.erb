@@ -17,6 +17,7 @@
   </thead>
 
   <tbody>
+    <%  if current_user.role == "admin" || current_user.role == "finance" || current_user.role == "ras" || current_user.role == "ra" %>
     <% @invoices.each do |invoice| %>
       <tr>
         <td><%= invoice.title %></td>
@@ -24,12 +25,13 @@
         <td><%= invoice.deadline %></td>
         <td><%= invoice.currency %></td>
         <td><%= invoice.total %></td>
-        <td><%= invoice.start_date.strftime "%a, %-d %b %Y %I:%M %p" %></td>
-        <td><%= invoice.end_date.strftime "%a, %-d %b %Y %I:%M %p" %></td>
+        <td><%= invoice.start_date %></td>
+        <td><%= invoice.end_date %></td>
         <td><%= link_to 'Show', invoice,:class => 'btn blue-gradient waves-effect waves-light' %></td>
         <td><%= link_to 'Edit', edit_invoice_path(invoice),:class => 'btn peach-gradient waves-effect waves-light' %></td>
         <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } , :class => 'btn btn-danger waves-effect waves-light'%></td>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>

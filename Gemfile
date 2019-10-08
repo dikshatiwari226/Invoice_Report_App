@@ -67,8 +67,14 @@ gem 'bootstrap-glyphicons'
 #  Gem devise
 gem 'devise'
 # datepicker
-gem 'bootstrap-datepicker-rails'
+# gem 'bootstrap-datepicker-rails'
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 4.2.1'
+gem 'momentjs-rails', '>= 2.9.0'
+
+
 #  bootstrap
 gem 'bootstrap', '~> 4.0.0'
-# gem 'bootstrap-sass', '~> 3.3.7'
+
+gem 'stripe'
+gem "figaro"
